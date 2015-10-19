@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
-      html, body, p, h1, ol, li, header, main, img, fieldset {
+      html, body, p, h1, ol, li, header, main, img, input, fieldset, section {
       	margin: 0;
       	padding: 0;
       	border: 0;
@@ -61,10 +61,21 @@
       }
 
       fieldset {
-        display:block;
+        display: block;
         height: 100px;
         width: 80px;
         float: left;
+      }
+
+      #final-answer-input {
+        display: block;
+        height: 25px;
+        width: 200px;
+        border: 2px solid pink;
+      }
+
+      input {
+        font-family: monospace;
       }
 
     </style>
@@ -84,30 +95,54 @@
         <li>
           <img src="./puz1.jpg" alt="" />
           <fieldset>
-            <input type="text" value="" class="letter">
+            <input type="text" value="" class="letter" id="puz1" onkeyup="answer()" maxlength="1">
           </fieldset>
         </li>
         <li>
           <img src="./puz2.jpg" alt="" />
           <fieldset>
-            <input type="text" value="" class="letter">
+            <input type="text" value="" class="letter" id="puz2" onkeyup="answer()" maxlength="1">
           </fieldset>
         </li>
         <li>
           <img src="./puz3.jpg" alt="" />
           <fieldset>
-            <input type="text" value="" class="letter">
+            <input type="text" value="" class="letter" id="puz3" onkeyup="answer()" maxlength="1">
           </fieldset>
         </li>
         <li>
           <img src="./puz4.jpg" alt="" />
           <fieldset>
-            <input type="text" value="" class="letter">
+            <input type="text" value="" class="letter" id="puz4" onkeyup="answer()" maxlength="1">
           </fieldset>
         </li>
       </ol>
     </main>
+    <section class="final-answer">
+      <input type="text" content="" id="final-answer-input">
+    </section>
   </body>
+  <script>
+
+    var puz1 = document.getElementById('puz1');
+    var puz2 = document.getElementById('puz2');
+    var puz3 = document.getElementById('puz3');
+    var puz4 = document.getElementById('puz4');
+
+    var letters = [puz1, puz2, puz3, puz4];
+
+    var finalAnswerInput = document.getElementById('final-answer-input');
+
+    var answer = function(){
+      var answer = ""
+      for (var i = 0; i < letters.length; i++){
+        answer += letters[i].value ? letters[i].value : " ";
+      }
+
+      finalAnswerInput.value = answer;
+    }
+
+  </script>
 </html>
 
 
